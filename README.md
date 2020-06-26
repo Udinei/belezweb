@@ -223,6 +223,149 @@ const schema = Yup.object().shape({
 ...
 ~~~
 
+## Instalado varias libs de controle e manipulação do state das sessões da app por meio das actions do Redux
+- redux react-redux : Integrando o redux  com o react na app
+- reactotron e reactroton-redux : Debug e integração com react
+yarn add reactotron-react-js reactotron-redux
+- Immer : Para lidar com alterações do state em objetos e arrays imutaveis (o que não é possivel sem o imer) Cria a próxima árvore de estado imutável, modificando a árvore atual
+- redux-saga : Intercepta actions, e adiciona novas informações aos objetos
+- plugin reactotron-redux-saga : Para obter mais informações do fluxo do state
+
+Comando abaixo instala todas as libs acima de uma vez, em modo dev:
+`yarn add redux react-redux reactotron-react-js reactotron-redux immer  redux-saga reactotron-redux-saga`
+
+Inicio dessa implementação se da com a criação da seguinte estrutura de pastas e files, e seus conteudos iniciais:
+src >
+ store >
+     index.js
+     createStore.js
+        modules >
+            rootReducer.js
+            rootSaga.js
+            auth >
+               actions.js
+               reducer.js
+               saga.js
+
+Configurações inicias dos files acima que compoem store do redux e saga:
+store >
+     index.js
+~~~
+import createSagaMiddleware from 'redux-saga';
+import createStore from './createStore';
+
+import rootReducer from './modules/rootReducer';
+import rootSaga from './modules/rootSaga';
+
+const sagaMonitor = process.env.NODE_ENV === 'development'
+? console.tron.createSagaMonitor()
+: null;
+
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+
+const middlewares = [sagaMiddleware];
+
+const store = createStore(rootReducer, middlewares);
+
+sagaMiddleware.run(rootSaga);
+
+export default store;
+~~~
+
+createStore.js
+~~~
+import { createStore, compose, applyMiddleware } from 'redux';
+
+export default (reducers, middlewares) => {
+    const enhancer =
+    process.env.NODE_ENV === 'development'
+    ? compose(
+        console.tron.createEnhancer(),
+        applyMiddleware(...middlewares)
+    )
+    : applyMiddleware(...middlewares)
+
+    return createStore(reducers, enhancer);
+};
+~~~
+
+modules >
+rootReducer.js
+~~~
+import { combineReducers } from 'redux';
+
+import auth from './auth/reducer';
+
+export default combineReducers({
+    auth,
+});
+~~~
+
+rootSaga.js
+~~~
+import { all } from 'redux-saga/effects';
+import auth from './auth/sagas';
+
+export default function* rootSaga(){
+    return yield all([auth]);
+}
+~~~
+
+auth >
+actions.js
+~~~
+
+~~~
+
+reducer.js
+~~~
+const INITIAL_STATE = {
+
+};
+
+export default function auth (state = INITIAL_STATE, action ){
+    switch(action.type) {
+        default:
+            return state;
+    }
+}
+~~~
+
+sagas.js
+~~~
+import { all } from 'redux-saga/effects';
+
+export default all([]);
+~~~
+
+Implementação básica final do App.js após integração com Redux e saga via store
+~~~
+import React from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import './config/ReactotronConfig';
+
+import Routes from './routes';
+import history from './services/history';
+import store from './store'; // pasta de implementação de integração com redux e saga
+
+import GlobalStyle from './styles/global';
+
+function App() {
+    return (
+        <Provider store={store}>
+            <Router history={ history } >
+                <Routes />
+                <GlobalStyle />
+            </Router>
+        </Provider>
+    );
+}
+export default App;
+~~~
+
+
 
 
 
