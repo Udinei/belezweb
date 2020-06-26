@@ -205,6 +205,24 @@ import { BrowserRouter as Router } from 'react-router-dom' ;
 ## instalado `yup` para realizar validações de dados tanto no frontend como no backend
 `yarn add yup`
 
+Código de implementação:
+~~~
+import * as Yup from 'yup'; // validação de campos e msg
+
+/** esquema da validação de campos , uso de shape para usar objetos */
+const schema = Yup.object().shape({
+    email: Yup.string()
+    .email('Insira um e-mail válido')
+    .required('O e-mail é obrigatório'),
+    password: Yup.string().required('A senha é obrigatória'),
+});
+~~~
+~~~
+...
+  <Form schema={schema} onSubmit={ hnadleSubmit }>
+...
+~~~
+
 
 
 
