@@ -366,6 +366,68 @@ export default App;
 ~~~
 
 
+## instalado axios para chamdas a apii externas
+`yarn add axios`
+
+
+# Erro ao usar o codigo abaixo:
+A navegação entra paginas usando <Redirect to="/">  ou history.push("/") não funcionam adequadamente com o Router do react-router-dom (bug)
+~~~
+import { BrowserRouter as Router } from 'react-router-dom';
+~~~
+
+foi trocado por:
+~~~
+import { Router } from 'react-router';
+~~~
+
+## instalado lib para persistencia de dados do o storage do browser
+O Redux Persist salva estado (objeto) Redux em armazenamento persistente.
+`yarn add redux-persist`
+
+## instalado lib react-toastify para exibição de mensagem ao usuario
+`yarn add react-toastify`
+
+
+# inclusão de dados no header via sagas
+codigo da função:
+~~~
+export function setToken({ payload }){
+   // se payload nao existe
+   if(!payload) return;
+
+   // se tiver obtem token
+   const { token } = payload.auth;
+
+   // se token existe no payload coloca no headers da app
+   if(token){
+         // adicionando token no header da app
+         api.defaults.headers.Authorization = `Bearer ${token}`;
+   }
+}
+
+
+// registrando action
+export default all([
+    takeLatest('persist/REHYDRATE', setToken),
+     ...
+]};
+~~~
+
+## instalado icones material design
+`yarn add react-icons`
+
+## instalado lib para inserção de scrollbar
+`yarn add react-perfect-scrollbar`
+
+## instalado lib para calculo de tempo horas etc
+`yarn add date-fns@next`
+
+
+## instalado lig para trabalhar com formato de datas UTC/TimeZone
+`yarn add date-fns-tz`
+
+
 
 
 

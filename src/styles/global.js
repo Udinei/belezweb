@@ -1,4 +1,6 @@
 ﻿import { createGlobalStyle } from 'styled-components';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'react-toastify/dist/ReactToastify.css'; // importando lib de msg
 
 export default createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -10,13 +12,17 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
+
     /** remove a seleção azul ao redor dos campos ao focar  */
     *:focus {
         outline: 0;
     }
 
      html, body, #root {
-         height: 100%; /** ocupa 100% da tela */
+         /** ocupa 100% da tela vh*/
+         /**  height: 100%; */
+        min-height: 100%;
+
      }
 
      body {

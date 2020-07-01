@@ -7,6 +7,8 @@ import { Route, Redirect } from 'react-router-dom';
 import AuthLayout from '~/pages/_layouts/auth';
 import DefaultLayout from '~/pages/_layouts/default';
 
+import { store } from '~/store';
+
 export default function RouteWrapper({
     // desestruturando, pegando as propriedades de routes, recebidas pelo RouterWrapper
     component: Component,
@@ -14,18 +16,22 @@ export default function RouteWrapper({
     ...rest
 }) {
 
-    const signed = false; // usuario nao esta logado
+    // obtendo dados de auth(autenticação), fornecidos pelo reducer de autenticacao, vindo store do redux
+    const { signed } = store.getState().auth;
+
+    //const signed = false;
 
     // vai para a tela de login
     if (!signed && isPrivate) {
-        console.tron.log('passou aqui');
-        return <Redirect from="*" to="/" />;
+        console.tron.log('passou aqui /');
+        return <Redirect from="*" to="/" />
 
     }
 
     // se estiver logado e rota nao privada vai para dashboard
     if (signed && !isPrivate) {
-         return <Redirect from="*"  to="/dashboard" />;
+        console.tron.log('passou aqui... dashborad');
+         return <Redirect  from="*" to="/dashboard" />;
 
     }
 
