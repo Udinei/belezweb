@@ -2,7 +2,8 @@
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
-    height: 100%;
+    height: 100vh;
+    width: 100%;
     background: linear-gradient(-90deg, #7159c1, #ab59c1);
     display: flex;
     justify-content: center;
@@ -10,14 +11,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-    width: 100%¨;
+    width: 100%;
     max-width: 315px;
     text-align: center;
 
     form {
         display: flex;
         flex-direction: column;
-        margin-top: 3px;
+        margin-top: 30px;
 
         input {
             background: rgba(0, 0, 0, 0.1);
