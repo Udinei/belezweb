@@ -38,7 +38,7 @@ export default function Dashboard() {
                 params: { date },
             });
 
-            console.tron.log(response.data);
+            //console.tron.log(response.data);
             // obtem timezone do usuario logado
             const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
