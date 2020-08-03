@@ -427,9 +427,20 @@ export default all([
 ## instalado lig para trabalhar com formato de datas UTC/TimeZone
 `yarn add date-fns-tz`
 
+## Exibindo imagem do bucket do AWS
+Instalar a lib react-aws-s3
+`yarn add react-aws-s3`
+
+## Executando a app no Brouser
+Porta 3000 - padrão de execução do app
+http://localhost:3000/
 
 
 # Colocando em produção no heroku
+Lendo Logs da aplicação em produção:
+heroku logs --tail --app belez-web
+
+
 
 Na appweb criado: Arquivo .env para acessar a porta 3333 em tempo de desenvolvimento com o conteudo:
 ~~~

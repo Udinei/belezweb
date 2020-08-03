@@ -4,7 +4,7 @@ import {
     setSeconds, isBefore, isEqual, parseISO
 } from 'date-fns';
 
-import { utcToZonedTime, format as formattz} from 'date-fns-tz'; // trata timezone
+import { utcToZonedTime } from 'date-fns-tz'; // trata timezone
 
 import pt from 'date-fns/locale/pt';
 
@@ -53,7 +53,6 @@ export default function Dashboard() {
                 // removendo da data a fração de segundos
                 const arrayDate = compareDate.toISOString().split(".")
                 const newDate = new Date(arrayDate[0] + '.000Z');
-
 
 
                 /** retorna somente os agendamentos do dia, onde as datas sao iguais */

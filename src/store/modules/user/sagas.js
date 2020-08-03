@@ -16,6 +16,7 @@ export function* updateProfile({ payload }) {
             rest.oldPassword ? rest : {},/** se oldpassword foi preenchido, o user quer alterar a senha, entao envia o restante dos dados de data, senao envia um objeto vazio */
         )
 
+
         // chama api para atualizar o profile
         const response = yield call(api.put, 'users', profile);
 

@@ -23,15 +23,13 @@ export default function RouteWrapper({
 
     // vai para a tela de login
     if (!signed && isPrivate) {
-        console.tron.log('passou aqui /');
-        return <Redirect from="*" to="/" />
+           return <Redirect from="*" to="/" />
 
     }
 
     // se estiver logado e rota nao privada vai para dashboard
     if (signed && !isPrivate) {
-        console.tron.log('passou aqui... dashborad');
-         return <Redirect  from="*" to="/dashboard" />;
+        return <Redirect  from="*" to="/dashboard" />;
 
     }
 

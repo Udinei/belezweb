@@ -18,7 +18,7 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn() {
-    // criando dispatch do redux
+    // criando obj dispatch que invoca action do redux
     const dispatch = useDispatch();
 
     // acessando o state do redux

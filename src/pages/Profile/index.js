@@ -10,12 +10,15 @@ import AvatarInput from './AvatarInput';
 import { Container } from './styles';
 
 export default function Profile() {
+    //cria obj para invocar actions - hooks
     const dispatch = useDispatch();
-    // acessando e state do redux
+
+    // acessando state via redux com useSelector
     const profile = useSelector(state => state.user.profile);
 
+
     function handleSubmit(data) {
-        dispatch(updateProfileRequest(data));
+      dispatch(updateProfileRequest(data));
     }
 
     function handleSignOut() {
