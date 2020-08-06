@@ -42,15 +42,12 @@ export default function AvatarInput() {
 
         const { id, url } = response.data;
 
-        console.log('URL.....', url);
-
         // atualizando state
         setFile(id);
         setPreview(url);
 
     }
 
-    // 'https://curso-reactjs.s3-sa-east-1.amazonaws.com/foto_face.jpg'
     return (
         <Container>
             <label htmlFor="avatar">
