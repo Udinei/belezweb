@@ -52,5 +52,6 @@ export const Time = styled.li`
         display: block;
         margin-top: 3px;
         color: ${props => (props.available ? '#999' : '#666')};
+
     }
 `;

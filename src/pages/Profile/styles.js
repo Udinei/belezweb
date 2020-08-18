@@ -70,7 +70,6 @@ export const Container = styled.div`
             font-size: 16px;
             transition: background 0.2s;
 
-
             &:hover {
                 background: ${ darken(0.08, '#f64c75')}; /** altera intensidade da cor ao passar o mouse sobre o botao */
             }

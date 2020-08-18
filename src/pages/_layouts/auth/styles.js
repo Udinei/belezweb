@@ -15,6 +15,8 @@ export const Content = styled.div`
     max-width: 315px;
     text-align: center;
 
+
+
     form {
         display: flex;
         flex-direction: column;
@@ -40,7 +42,8 @@ export const Content = styled.div`
             align-self: flex-start;
             margin: 0 0 10px;
             font-weight: bold;
-        }
+
+         }
 
         button {
             margin: 5px 0 0;
@@ -56,6 +59,7 @@ export const Content = styled.div`
             &:hover {
                 background: ${ darken(0.03, '#3b9eff')}; /** altera intensidade da cor ao passar o mause sobre o botao */
             }
+
         }
 
         a {

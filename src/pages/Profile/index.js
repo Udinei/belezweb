@@ -47,9 +47,12 @@ export default function Profile() {
                     name="confirmPassword"
                     placeholder="Confirmação de senha"
                 />
+                <hr />
+                <Input name="celular" placeholder="Nova senha" />
 
                 <button type="submit">Atualizar perfil</button>
             </Form>
+
             <button type="button" onClick={ handleSignOut } >Sair do BelezWeb</button>
         </Container>
     );

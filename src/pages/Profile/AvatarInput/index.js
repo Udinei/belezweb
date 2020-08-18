@@ -6,7 +6,7 @@ import { Container } from './styles';
 
 export default function AvatarInput() {
 
-    // obtem o avatar do profile gravado no state, e coloca em defaultValue
+    // obtem dados do File (alias avatar) gravado no state, e coloca em defaultValue
     const { defaultValue, registerField } = useField('avatar');
 
     // se  defaultValue - recupera o  id do avatar
@@ -14,7 +14,7 @@ export default function AvatarInput() {
 
     // se defaultValue - recupera url do avatar
     const [preview, setPreview] = useState(defaultValue && defaultValue.url);
-
+    console.log("preview....", preview);
     // ref - guarda referencia do input, que a usa
     const ref = useRef();
 
@@ -24,13 +24,14 @@ export default function AvatarInput() {
             registerField({
                 name: 'avatar_id',
                 ref: ref.current,      // input corrente
-                path: 'dataset.file', //valor do data-file
+                path: 'dataset.file', // id do File (avatar)
             });
         }
     }, [ref, registerField])
 
     // ao selecionar uma nova imagem
     async function handleChange(e) {
+        console.log("default value....", e);
         // criando objeto para uso com multer partFormData ( arquivo de imagens)
         const data = new FormData();
 

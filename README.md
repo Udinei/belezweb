@@ -413,6 +413,12 @@ export default all([
      ...
 ]};
 ~~~
+## instalado Material-UI design
+SITE: https://material-ui.com/pt/getting-started/installation/
+`yarn add @material-ui/core`
+
+## instalado Icones do Material-UI design
+`yarn add @material-ui/icons`
 
 ## instalado icones material design
 `yarn add react-icons`
